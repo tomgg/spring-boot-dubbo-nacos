@@ -14,12 +14,13 @@
 
 
     <groupId>cn.yase</groupId>
-    <artifactId>spring-boot-dubbo-demo</artifactId>
+    <artifactId>spring-boot-dubbo-nacos</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
         <spring.boot.version>2.1.8.RELEASE</spring.boot.version>
+        <dubbo.spring.boot.starter.version>2.7.3</dubbo.spring.boot.starter.version>
     </properties>
 
     <dependencyManagement>
@@ -47,7 +48,7 @@
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-spring-boot-starter</artifactId>
-                <version>2.7.3</version>
+                <version>${dubbo.spring.boot.starter.version}</version>
             </dependency>
 
             <dependency>
@@ -71,7 +72,6 @@
         <module>provider</module>
         <module>consumer</module>
     </modules>
-
 
 
 </project>

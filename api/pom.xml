@@ -7,7 +7,7 @@
     <artifactId>api</artifactId>
 
     <parent>
-        <artifactId>spring-boot-dubbo-demo</artifactId>
+        <artifactId>spring-boot-dubbo-nacos</artifactId>
         <groupId>cn.yase</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>

@@ -1,3 +1,5 @@
+package cn.yase.api;
+
 /**
  * @author yase
  * @since 2019/9/24 下午5:08
