@@ -1,0 +1,28 @@
+
+spring:
+  application:
+    name:
+      dubbo-register-nacos-provider
+
+server:
+  port: 8080
+
+dubbo:
+  scan:
+    base-packages:
+      cn.yase
+  application:
+    name: dubbo-rest-provider
+  registry:
+    address: nacos://127.0.0.1:8848
+  protocols:
+    dubbo:
+      name: dubbo
+      port: -1
+      server: netty
+    rest:
+      name: rest
+      port: 8888
+      server: netty
+  metadata-report:
+    address: redis://127.0.0.1:6379
