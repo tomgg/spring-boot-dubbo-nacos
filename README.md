@@ -30,3 +30,14 @@
 
 ## spring boot consumer 启动
 控制台上输出 : yase 你好!  
+
+# spring boot rest服务支持
+## spring boot provider 启动
+
+## spring boot consumer 启动
+
+## 测试
+### http测试
+curl http://localhost:8081/user/http?name=yase
+### dubbo测试 
+curl http://localhost:8081/user/dubbo?name=yase

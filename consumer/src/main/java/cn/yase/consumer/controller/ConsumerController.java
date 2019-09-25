@@ -1,24 +1,22 @@
 package cn.yase.consumer.controller;
 
-import com.alibaba.fastjson.JSONObject;
+import javax.annotation.Resource;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONPObject;
+import okhttp3.*;
 import org.apache.dubbo.config.annotation.Reference;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.alibaba.fastjson.JSONObject;
 
 import cn.yase.api.SayHello;
 import cn.yase.dto.UserDTO;
 import cn.yase.param.UserParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.Resource;
+import java.io.IOException;
 
 /**
  * @author yase
@@ -36,6 +34,7 @@ public class ConsumerController {
 
     /**
      * dubbo调用
+     * 
      * @param name
      * @return
      */
@@ -43,35 +42,44 @@ public class ConsumerController {
     public UserDTO sayHelloByDubbo(String name) {
 
         UserParam param = new UserParam();
-        param.setName(name);
+        param.setName(name+" dubbo");
 
         return sayHello.sayHello(param);
     }
 
     /**
      * http调用
+     * 
      * @param name
      * @return
      */
     @GetMapping("user/http")
-    public UserDTO sayHelloByHttp(String name){
+    public UserDTO sayHelloByHttp(String name) throws IOException {
 
-        // 需要看使用者的IP地址
-        String host = "10.10.0.157";
+         // 本地IP地址
+         String host = "10.10.0.157";
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
+         String url = "http://" + host + ":8888/sayHello/user";
 
-        MultiValueMap<String, String> map= new LinkedMultiValueMap<>();
-        map.add("name", name);
+        // 创建Content-Type头为JSON
+        MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
 
-        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
+        OkHttpClient client = new OkHttpClient();
+        JSONObject requestBody = new JSONObject();
+        requestBody.put("name", "yase http");
 
-        ResponseEntity<String> response = restTemplate.postForEntity( "http://"+host+":8888/sayHello/user", request , String.class );
+        // 根据ContentType构建请求体
+        RequestBody body = RequestBody.create(mediaType, requestBody.toJSONString());
 
-        System.out.println(response);
+        // 设置请求体
+        Request request = new Request.Builder().url(url).post(body)
+            .build();
 
-        String result = response.getBody();
+        Response response = client.newCall(request).execute();
+
+        String result = response.body().string();
+
+        System.out.println(result);
 
         return JSONObject.parseObject(result, UserDTO.class);
     }
