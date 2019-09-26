@@ -22,19 +22,13 @@
 ```
 ## spring boot provider 启动
 
+## spring boot consumer 启动
+
 登录 http://localhost:8848/nacos/index.html  
 
 初始账号、密码: nacos nacos
 
 可以在服务列表中看到刚注册的服务
-
-## spring boot consumer 启动
-控制台上输出 : yase 你好!  
-
-# spring boot rest服务支持
-## spring boot provider 启动
-
-## spring boot consumer 启动
 
 ## 测试
 ### http测试
