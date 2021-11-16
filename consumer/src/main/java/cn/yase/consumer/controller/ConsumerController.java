@@ -57,10 +57,8 @@ public class ConsumerController {
     public UserDTO sayHelloByHttp(String name) throws IOException {
 
          // 本地IP地址
-         String host = "10.10.0.157";
-
-         String url = "http://" + host + ":8888/sayHello/user";
-
+         String addr = "127.0.0.1:8888";
+         String url = "http://" + addr + "/sayHello/user";
         // 创建Content-Type头为JSON
         MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
 

@@ -1,4 +1,6 @@
-
+project:
+  name:
+    dubbo-demo
 spring:
   application:
     name:
@@ -24,5 +26,6 @@ dubbo:
       name: rest
       port: 8888
       server: netty
+
   metadata-report:
     address: redis://127.0.0.1:6379

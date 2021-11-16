@@ -9,14 +9,12 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-
     <groupId>cn.yase</groupId>
     <artifactId>provider</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>provider</name>
 
     <dependencies>
-
         <dependency>
             <groupId>cn.yase</groupId>
             <artifactId>api</artifactId>
@@ -95,6 +93,20 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
+        </dependency>
+
+        <!--自动注册dubbo服务到sentinel dashboard-->
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-apache-dubbo-adapter</artifactId>
+            <version>1.8.2</version>
+        </dependency>
+
+        <!-- sentinel客户端与 sentinel dashboard 通信依赖 -->
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-transport-simple-http</artifactId>
+            <version>1.8.2</version>
         </dependency>
 
     </dependencies>
