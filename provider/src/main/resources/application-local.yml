@@ -13,7 +13,7 @@ spring:
       dubbo-register-nacos-provider
 
 server:
-  port: 8080
+  port: 6080
 
 dubbo:
   scan:
@@ -30,7 +30,7 @@ dubbo:
       server: netty
     rest:
       name: rest
-      port: 8888
+      port: 8899
       server: netty
 
   metadata-report:
