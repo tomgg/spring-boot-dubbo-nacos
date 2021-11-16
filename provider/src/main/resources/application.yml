@@ -1,12 +1,6 @@
 project:
   name:
     dubbo-demo
-  app:
-    name:
-      dubbo-demo
-  diamond:
-    serverAddr:
-      127.0.0.1:8848
 spring:
   application:
     name:
